@@ -1,0 +1,1 @@
+Artifact management in CI/CD ensures consistent storage, versioning, and retrieval of build artifacts, enabling reliable deployments and reproducibility. It enhances collaboration by allowing teams to share and reuse artifacts while maintaining traceability. Additionally, it supports compliance by preserving a history of all builds.
