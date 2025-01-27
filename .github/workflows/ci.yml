@@ -1,20 +1,40 @@
-name: Simple CI
+name: CI CD Artefaktai
 
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
-  simple-job:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
+      # Kodo patikra
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run a simple command
-        run: echo "Hello, World!"
+      # Idiegti phytona
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+
+      # Lintas(flake8)
+      - name: Run flake8 linter
+        run: |
+          flake8 app.py
+
+      # Testai
+      - name: Run tests with pytest
+        run: |
+          pytest
